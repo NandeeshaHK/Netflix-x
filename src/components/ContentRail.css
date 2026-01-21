@@ -1,0 +1,83 @@
+.rail-container {
+    padding: 1rem 0;
+    position: relative;
+    /* overflow: visible; allow popups */
+    margin-bottom: 2rem;
+    z-index: 10;
+}
+
+.rail-container:hover {
+    z-index: 20;
+    /* Bring to front when hovering so cards can expand */
+}
+
+.rail-title {
+    font-size: 1.4rem;
+    color: #e5e5e5;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding-left: 4%;
+}
+
+.rail-title:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.rail-wrapper {
+    position: relative;
+}
+
+.rail-scroll {
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px 4%;
+    /* Vertical padding for hover expansion */
+    gap: 10px;
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE */
+    scroll-behavior: smooth;
+}
+
+.rail-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.rail-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    z-index: 30;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.rail-control:hover {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1 !important;
+    /* Force show on hover of the button itself */
+}
+
+.rail-container:hover .rail-control {
+    opacity: 1;
+    /* Show when hovering the rail */
+}
+
+.rail-control.left {
+    left: 0;
+}
+
+.rail-control.right {
+    right: 0;
+}
