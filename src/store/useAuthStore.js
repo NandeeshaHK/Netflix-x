@@ -16,19 +16,9 @@ const useAuthStore = create(
                 const profile = get().profiles.find((p) => p.profileId === profileId);
                 if (!profile) return { success: false, message: 'Profile not found' };
 
-                // Check if profile is pin protected
-                if (mockAuth.pinProtectedProfiles.includes(profileId)) {
-                    if (pin === mockAuth.pin) {
-                        set({ isAuthenticated: true, currentProfile: profile });
-                        return { success: true };
-                    } else {
-                        return { success: false, message: 'Incorrect PIN' };
-                    }
-                } else {
-                    // No pin needed
-                    set({ isAuthenticated: true, currentProfile: profile });
-                    return { success: true };
-                }
+                // Always allow login, ignoring PIN protection
+                set({ isAuthenticated: true, currentProfile: profile });
+                return { success: true };
             },
 
             logout: () => {

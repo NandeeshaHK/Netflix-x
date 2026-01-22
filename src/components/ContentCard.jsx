@@ -18,7 +18,7 @@ const ContentCard = ({ content }) => {
     };
 
     const handleDetails = () => {
-        navigate(`/watch/${content.media_type || 'movie'}/${content.id}`);
+        navigate(`/title/${content.media_type || 'movie'}/${content.id}`);
     };
 
     // Genre mapping lookup
@@ -36,7 +36,12 @@ const ContentCard = ({ content }) => {
             onClick={handleDetails}
         >
             <div className="content-card">
-                <img src={imageUrl} alt={content.title || content.name} className="card-img" />
+                <img
+                    src={imageUrl}
+                    alt={content.title || content.name}
+                    className="card-img"
+                    onError={(e) => e.target.style.display = 'none'}
+                />
             </div>
 
             {isHovered && (

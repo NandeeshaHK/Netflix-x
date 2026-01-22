@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, LogOut, Moon, Sun } from 'lucide-react';
+import { Search, Bell, LogOut } from 'lucide-react';
 import useAuthStore from '../store/useAuthStore';
 import './Navbar.css';
+
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +30,13 @@ const Navbar = () => {
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <div className="navbar-container">
                 <div className="left">
-                    <Link to="/" className="brand-logo">STREAMFLIX</Link>
+                    <Link to="/" className="brand-logo">
+                        <img src={logo} alt="StreamFlix" />
+                        <span className="brand-text">
+                            <span className="text-white">STREAM</span>
+                            <span className="text-red">FLIX</span>
+                        </span>
+                    </Link>
                     <ul className="nav-links">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/tv">TV Shows</Link></li>

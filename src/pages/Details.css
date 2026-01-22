@@ -1,0 +1,401 @@
+.details-page {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #141414;
+    color: white;
+    overflow-x: hidden;
+}
+
+.details-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full screen hero */
+    overflow: hidden;
+}
+
+.hero-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    z-index: 5;
+}
+
+.hero-backdrop.fade-out {
+    opacity: 0;
+}
+
+.hero-video-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 4;
+    /* Below backdrop initially */
+}
+
+.hero-video-wrapper.visible {
+    opacity: 1;
+    z-index: 6;
+    /* Above backdrop when visible */
+}
+
+/* Ensure iframe sits correctly */
+.hero-video-wrapper iframe {
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.77vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+    pointer-events: none;
+    /* Crucial for background interaction */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.4) 60%, transparent 80%),
+        linear-gradient(to top, #141414 0%, transparent 40%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.details-content {
+    position: absolute;
+    /* Move lower as per request "lower left half" */
+    bottom: 5%;
+    left: 4%;
+    transform: none;
+    /* Removed center transform */
+    top: auto;
+    z-index: 20;
+    max-width: 50%;
+    /* Strictly left half */
+    width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.8s ease-out;
+    transition: opacity 0.5s ease;
+}
+
+/* ... existing animation ... */
+
+.movie-title {
+    font-size: 5rem;
+    /* Larger title */
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.meta-data {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #e5e5e5;
+}
+
+.match-score {
+    color: #46d369;
+    font-weight: bold;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-circle {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating-svg {
+    transform: rotate(-90deg);
+}
+
+.rating-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 4;
+}
+
+.rating-progress {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-out;
+}
+
+.overview {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.btn-primary {
+    padding: 0.8rem 2.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    padding: 0.8rem 2.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    background: rgba(109, 109, 110, 0.7);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(109, 109, 110, 0.4);
+}
+
+.btn-round {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(42, 42, 42, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-round:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 50;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    padding: 12px;
+    border-radius: 50%;
+    /* Circle */
+    text-shadow: none;
+    transition: all 0.3s ease;
+    /* Black gradient behind */
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.back-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sound Toggle */
+.sound-btn {
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    z-index: 50;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.5s ease;
+}
+
+.sound-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sound-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Stacked Cast Section */
+.cast-stack-container {
+    margin-top: 1.5rem;
+    position: relative;
+    height: 180px;
+    /* Space for the stack */
+    width: 300px;
+}
+
+.cast-stack-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.cast-card-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 170px;
+    /* Small rounded poster */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #222;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth swipe */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stack-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stack-info-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background: linear-gradient(to top, black 20%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.stack-actor-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.stack-char-name {
+    font-size: 0.65rem;
+    color: #ccc;
+}
+
+/* Action Row with Toggle */
+.action-buttons-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-cast-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(40, 40, 40, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 16px 6px 6px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cast-toggle:hover,
+.btn-cast-toggle.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.avatars-preview {
+    display: flex;
+}
+
+.avatars-preview img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #141414;
+    margin-right: -10px;
+    /* Overlap */
+    object-fit: cover;
+}
+
+.avatars-preview img:last-child {
+    margin-right: 0;
+}

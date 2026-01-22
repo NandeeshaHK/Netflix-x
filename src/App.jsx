@@ -4,6 +4,7 @@ import ProfileSelection from './pages/ProfileSelection';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Watch from './pages/Watch';
+import Details from './pages/Details';
 import useAuthStore from './store/useAuthStore';
 
 // Protected Route Wrapper
@@ -43,6 +44,12 @@ function App() {
         <Route path="/search" element={
           <ProtectedRoute>
             <Search />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/title/:type/:id" element={
+          <ProtectedRoute>
+            <Details />
           </ProtectedRoute>
         } />
 

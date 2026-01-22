@@ -32,13 +32,38 @@
 }
 
 .brand-logo {
-    color: var(--primary);
-    font-size: 1.8rem;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
+}
+
+.brand-logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    /* Bold premium font weight */
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
-    /* Brand glow */
+    line-height: 1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.text-white {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.text-red {
+    color: #e50914;
+    /* Netflix Red */
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
 }
 
 .nav-links {

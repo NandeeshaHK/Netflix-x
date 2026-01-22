@@ -60,7 +60,7 @@ const Home = () => {
             <Navbar />
             <HeroBanner content={heroContent} />
 
-            <div style={{ marginTop: '-100px', position: 'relative', zIndex: 20 }}>
+            <div style={{ marginTop: '-40px', position: 'relative', zIndex: 20 }}>
                 <ContentRail title={`Top Picks for ${currentProfile.name}`} content={topPicks} />
                 <ContentRail title="Trending Now" content={trending} />
                 <ContentRail title="Popular on StreamFlix" content={popular} />
