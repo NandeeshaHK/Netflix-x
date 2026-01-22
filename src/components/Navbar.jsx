@@ -31,9 +31,9 @@ const Navbar = () => {
             <div className="navbar-container">
                 <div className="left">
                     <Link to="/" className="brand-logo">
-                        <img src={logo} alt="StreamFlix" />
+                        <img src={logo} alt="CrazyFlix" />
                         <span className="brand-text">
-                            <span className="text-white">STREAM</span>
+                            <span className="text-white">CRAZY</span>
                             <span className="text-red">FLIX</span>
                         </span>
                     </Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
                         <div className="dropdown">
                             <span>{currentProfile.name}</span>
                             <button onClick={handleLogout} className="logout-btn">
-                                <LogOut size={14} /> Sign out of StreamFlix
+                                <LogOut size={14} /> Sign out of CrazyFlix
                             </button>
                         </div>
                     </div>
